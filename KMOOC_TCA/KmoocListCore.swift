@@ -21,13 +21,13 @@ struct KmoocStore: Reducer {
     }
     
     var body: some ReducerOf<Self> {
-        let apiKey = "ippi%2Fy9Gf3%2BA4JqB8D4T2JiHyZWq78e%2BSgmpwgpM5dpNadZ4v4qLHOzBm8nMNt8Kv2GST3iGtXWwxk3cqswLPg%3D%3D"
+        let apiKey = Bundle.main.infoDictionary?["KMOOCAPI_KEY"] ?? ""
         
         Reduce { state, action in
             switch action {
             case .fetchData:
                 return .run { send in
-                    guard let url = URL(string: "http://apis.data.go.kr/B552881/kmooc_v2_0/courseList_v2_0?serviceKey=\(apiKey)&Page=2&Size=15") else {
+                    guard let url = URL(string: "https://apis.data.go.kr/B552881/kmooc_v2_0/courseList_v2_0?serviceKey=\(apiKey)&Page=2&Size=15") else {
                         print(URLError(.badURL))
                         return
                     }
