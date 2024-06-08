@@ -50,6 +50,8 @@ struct KmoocStore: Reducer {
                     }
                     
                     await send(.dataResponse(response.list))
+                } catch: { error, send in
+                    print(error.localizedDescription)
                 }
                 
             case let .dataResponse(classList):

@@ -40,6 +40,7 @@ struct KmoocListView: View {
                                     .fontWeight(.regular)
                                     .foregroundStyle(.gray)
                             }
+                            .padding()
                             
                             Spacer()
                         }
